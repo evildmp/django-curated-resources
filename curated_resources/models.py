@@ -16,9 +16,9 @@ class Resource(models.model):
         help_text="Use carriage returns for paragraphs, and asterisks for list items")
     published = models.BooleanField(
         default=False, 
-        verbose_name=_(u"Is published"), 
+        verbose_name = u"Is published", 
         db_index=True,
-        help_text=_(u"Select when ready to be published"))
+        help_text=(u"Select when ready to be published"))
     related_to = models.ManyToManyField(
         Resource, 
         help_text=u"Similar resources - use judiciously", 
@@ -29,12 +29,12 @@ class Resource(models.model):
     topics = models.ManyToManyField(
         Topic,
         null=True, blank=True.
-        help_text=_(u"Informal mapping of this resource to topics")
+        help_text=(u"Informal mapping of this resource to topics")
         )
     domains = models.ManyToManyField(
         Topic,
         null=True, blank=True,
-        help_text=_(u"Formal mapping of this resource to a domain or domains"))
+        help_text=(u"Formal mapping of this resource to a domain or domains"))
     resource_type = models.ForeignKey(
         ResourceType, 
         )

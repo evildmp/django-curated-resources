@@ -1,0 +1,3 @@
+include LICENSE.txt
+recursive-include curated_resources/templates *
+recursive-include docs *
