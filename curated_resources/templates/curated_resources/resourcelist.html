@@ -1,0 +1,35 @@
+{% extends "curated_resources/base.html" %}
+{% load pagination_tags %}
+{% block curated_resources %}
+                                                    
+<form action="" method="GET" class="filter-form">
+    {% for field in search_fields %}
+        <div>
+            <label for="{{ field.field_name }}">
+            	<span class="label-text">{{ field.field_label }}:</span>
+            </label>                  
+
+            <input placeholder="{{ field.placeholder }}" type="search" name="{{ field.field_name }}" value="{{ field.value }}"> <input type="submit" value="Search"> 
+        </div>
+    {% endfor %}    
+   
+    {% for field in hidden_search_fields %}
+        <input type="hidden" name="{{ field.field_name }}" value="{{ field.value }}"> 
+    {% endfor %}    
+</form>
+
+	    {% autopaginate resources 8 %}
+	    {{ resourcesfilter }}
+	    {% paginate %}  
+
+
+	</div>
+	<h3>Matching resources</h3>
+			<ul>
+	            {% for item in resources %}
+				<li><a href="{{item.get_absolute_url }}">{{ item }}</a></li>
+	            {% endfor %}
+	        </ul>
+                                                 
+{% endblock curated_resources %}
+												 

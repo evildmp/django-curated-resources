@@ -1,0 +1,11 @@
+{% extends "curated_resources/base.html" %}
+
+{% block curated_resources %}
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for obj in filter %}
+        {{ obj.title }}<br />
+    {% endfor %}
+{% endblock curated_resources %}

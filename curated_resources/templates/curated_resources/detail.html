@@ -1,0 +1,50 @@
+{% extends "curated_resources/base.html" %}
+{% block curated_resources %}
+    {% load markup %}
+    <h1>{{ resource.title }}</h1>
+    <p>{{ resource.description|restructuredtext }}</p> 
+
+    <h2>Domains</h2>
+    <ul>
+    {% for domain in resource.domains.all %}
+        <li>{{ domain }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Topics</h2>
+    <ul>
+    {% for topic in resource.topics.all %}
+        <li>{{ topic }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Suitable for</h2>
+    <ul>
+    {% for suitable_for in resource.suitable_for.all %}
+        <li>{{ suitable_for }}</li>
+    {% endfor %}
+    </ul> 
+
+    <h2>Related resources</h2>
+    <ul>
+    {% for related_to in resource.related_resources %}
+        <li><a href="{{ related_to.get_absolute_url }}">{{ related_to }}</a></li>
+    {% endfor %}
+    </ul> 
+
+    <h2>Duration</h2>
+    <p>{{ resource.duration }}</p>
+
+    <h2>Cost</h2>
+    <p>{{ resource.cost }}</p>
+
+    <h2>Link</h2>
+    <p><a href="{{ resource.destination_content_object.get_absolute_url }}">{{ resource.destination_content_object }}</a></p>
+
+    <h2>Curated by</h2>
+    <ul>
+    {% for curator in resource.curators.all %}
+        <li><a href="{{ curator.get_absolute_url }}">{{ curator }}</a></li>
+    {% endfor %}
+    </ul> 
+{% endblock curated_resources %}
